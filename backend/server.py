@@ -1,11 +1,12 @@
 # Filename - server.py
 # Import flask and datetime module for showing date and time
-from flask import Flask
+from flask import Flask, jsonify
 import datetime
 from flask_cors import CORS,cross_origin
 import pymongo
 from pymongo import MongoClient
 from flask import request
+from google_api import get_book_id, get_related_books, search_books
 
 # Connects to cluster and database
 cluster = MongoClient(
@@ -57,7 +58,18 @@ def log_book():
         "Age":"22",
         "Date":x, 
         "programming":"python"}
-     
+
+@app.route('/getBooks',methods=['GET'])
+def get_books():
+    # need to find a way to get input string from frontend search bar, and call 
+    # search_books() function with that paramter
+    seach_term = request.args.get('query')
+    print(seach_term)
+    data = search_books(seach_term)
+    return jsonify(data[0])
+
+    
+
 # Running app
 if __name__ == '__main__':
     app.run(debug=True)

@@ -59,15 +59,35 @@ def get_related_books(book_id: str, max_results=5) -> list:
         print('Failed to retrieve related books. Status code:', response.status_code)
         return []
 
-
-def main():
-    book_id = get_book_id("The Perfect Storm", "Sebastian Junger")
-    print(book_id)
-
-    # related_books = get_related_books(first_book_id, 10)
-    # for book in related_books:
-    #     print(book['title'])
-
-
-if __name__ == "__main__":
-    main()
+def search_books(query: str, max_results: int = 10):
+    """
+    Search books using the Google Books API.
+    
+    :param query: The search query.
+    :param max_results: Maximum number of results to retrieve.
+    :return: List of books matching the query.
+    """
+    url = 'https://www.googleapis.com/books/v1/volumes'
+    params = {'q': query, 'maxResults': max_results}
+    
+    response = requests.get(url, params=params)
+    
+    if response.status_code == 200:
+        data = response.json()
+        if 'items' in data:
+            books = []
+            for item in data['items']:
+                book_info = {
+                    'title': item['volumeInfo']['title'],
+                    'authors': item['volumeInfo'].get('authors', []),
+                    'description': item['volumeInfo'].get('description', 'No description available')
+                }
+                books.append(book_info)
+            return books
+        else:
+            print('No books found for the query:', query)
+            return []
+    else:
+        print('Failed to retrieve books. Status code:', response.status_code)
+        return []
+    
