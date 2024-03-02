@@ -48,7 +48,7 @@ const BookLogForm = () => {
     "Mythology",
     "Science Fiction/Fantasy"
   ];
->>>>>>> main
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
