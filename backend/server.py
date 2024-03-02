@@ -1,6 +1,6 @@
 # Filename - server.py
 # Import flask and datetime module for showing date and time
-from flask import Flask
+from flask import Flask, jsonify
 import datetime
 from flask_cors import CORS,cross_origin
 import pymongo
@@ -57,7 +57,21 @@ def log_book():
         "Age":"22",
         "Date":x, 
         "programming":"python"}
-     
+
+@app.route('/getBooks',methods=['GET'])
+def get_books():
+    print("Searching book...")
+    # Returning an api for showing in  reactjs
+    data = {
+        'Title':"A Tale of Two Cities", 
+        "Author":"John Doe",
+        "Genre":"Fantasy", 
+        "Date Started":"1-1-2024",
+        "Date Ended":"1-5-2024",
+        "Rating": 5
+        }
+    return jsonify(data)
+
 # Running app
 if __name__ == '__main__':
     app.run(debug=True)
