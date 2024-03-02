@@ -1,6 +1,9 @@
 // Importing modules
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import Navbar from "./components/Navbar";
+import BookLog from "./pages/BookLog";
+import LandingPage from './pages/LandingPage'
+import Discover from "./pages/Discover";
 
 function App() {
   // usestate for setting a javascript
@@ -30,16 +33,14 @@ function App() {
   }, []);
 
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <h1>React and flask</h1>
-        {/* Calling a data from setdata for showing */}
-        <p>{data.name}</p>
-        <p>{data.age}</p>
-        <p>{data.date}</p>
-        <p>{data.programming}</p>
-      </header>
+      <Navbar/>
+      <LandingPage/>
+      <BookLog/>
+      <Discover/>
     </div>
+    </>
   );
 }
 
