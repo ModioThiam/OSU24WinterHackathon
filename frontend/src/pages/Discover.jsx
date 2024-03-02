@@ -4,24 +4,30 @@ import './Discover.css';
 
 function Discover() {
     const [searchWord, setSearchWord] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState(null);
 
     const handleSearchChange = (e) => {
         setSearchWord(e.target.value);
     };
 
-    const handleSearchSubmit = (e) => {
+    const handleSearchSubmit = async (e) => {
         e.preventDefault();
         // Do search using searchWord
         console.log("Search Word:", searchWord);
-        // Dummy search results
-        const results = [
-            { id: 1, title: "Title of Book1", author: "Jane Doe" , Description:"Thriller"},
-            { id: 2, title: "Title of Book2", author: "Jane Doe" , Description:"Nonfiction", },
-            { id: 3, title: "Title of Book3", author: "Jane Doe" , Description:"Historical", },
-        ];
-        setSearchResults(results);
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/getBooks`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch search results');
+            }
+            const data = await response.json();
+            console.log('Fetched',data)
+            setSearchResults(data); // Update search results state
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
+
 
     return (
         <>
@@ -38,20 +44,27 @@ function Discover() {
                     <button type="submit">Search</button>
                 </form>
                 {/* Display search results */}
-                {searchResults.length > 0 && (
                     <div>
                         <h2>Search Results:</h2>
                         <ul>
-                            {searchResults.map((result) => (
-                                <li key={result.id}>{result.title} by {result.author}</li>
-                            ))}
+                        {searchResults && (
+                            <div>
+                                <h2>Book Details:</h2>
+                                <p><strong>Title:</strong> {searchResults.Title}</p>
+                                <p><strong>Author:</strong> {searchResults.Author}</p>
+                                <p><strong>Genre:</strong> {searchResults.Genre}</p>
+                                <p><strong>Date Started:</strong> {searchResults['Date Started']}</p>
+                                <p><strong>Date Ended:</strong> {searchResults['Date Ended']}</p>
+                                <p><strong>Rating:</strong> {searchResults.Rating}</p>
+                            </div>
+                        )}
                         </ul>
                     </div>
-                )}
+            
             </div>
         </div>
         </>
     )
 }
-export default Discover;
 
+export default Discover;
