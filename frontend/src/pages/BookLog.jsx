@@ -1,5 +1,6 @@
 import React from "react";
 import './BookLog.css';
+import BookLogForm from "./BookLogForm";
 
 function BookLog() {
     return (
@@ -11,6 +12,7 @@ function BookLog() {
                     <div className="cards-container-box">
 
                     </div>
+                    <BookLogForm/>
                 </div>
             </div>
         </div>
