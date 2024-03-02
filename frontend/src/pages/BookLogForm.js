@@ -2,14 +2,6 @@ import React, { useState } from "react";
 
 
 const BookLogForm = () => {
-<<<<<<< HEAD
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
-  const [dateStarted, setDateStarted] = useState("");
-  const [dateFinished, setDateFinished] = useState("");
-  const [rating, setRating] = useState("");
-=======
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [genre, setGenre] = useState('');
