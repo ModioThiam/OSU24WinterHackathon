@@ -17,6 +17,7 @@
     margin-top: 100px;
     margin-left: 80px;
     margin-right: 80px;
+    margin-bottom: 212px;
 
 }
 
@@ -34,7 +35,7 @@
 }
 
 .start-btn{
-    background-color: white; 
+    background-color: rgba(149, 72, 31, 0.686);
     color: black; 
     padding: 20px 20px; 
     font-size: 16px; 
@@ -45,9 +46,10 @@
 }
 
 .start-btn:hover{
-    background-color: rgba(149, 72, 31, 0.686);
+    background-color: whitesmoke;
 }
-#myImage {
+
+#myVideo {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -55,6 +57,5 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(0.5); 
+    filter: brightness(0.9); 
 }
-

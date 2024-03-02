@@ -11,7 +11,7 @@ function Navbar() {
                 <nav className="navigation-menu">
                     <ul>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#tracker">Tracker</a></li>
+                        <li><a href="#booklog">Book Log</a></li>
                         <li><a href="#discover">Discover</a></li>
                     </ul>
                 </nav>

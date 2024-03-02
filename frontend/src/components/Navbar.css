@@ -4,7 +4,9 @@
 }
 
 .navigation {
-    background-color: black; 
+    /* background-color: black;  */
+    backdrop-filter:brightness(0.7); 
+    /* filter: brightness(0.5);   */
     padding: 20px 20px; 
     display: flex; 
     justify-content: space-between;
@@ -29,7 +31,7 @@ nav ul li{
 }
 
 nav ul li a{
-    color: rgb(223, 178, 160);
+    color: white;
     text-decoration: none;
     font-size: 20px;
 }
