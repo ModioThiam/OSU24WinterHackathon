@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 
 const BookLogForm = () => {
+<<<<<<< HEAD
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [dateStarted, setDateStarted] = useState("");
+  const [dateFinished, setDateFinished] = useState("");
+  const [rating, setRating] = useState("");
+=======
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [genre, setGenre] = useState('');
@@ -48,18 +56,43 @@ const BookLogForm = () => {
     "Mythology",
     "Science Fiction/Fantasy"
   ];
+>>>>>>> main
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    // const response = fetch("http://127.0.0.1:5000/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ example: "example" }),
+    // });
 
-    
-    setTitle('');
-    setAuthor('');
-    setGenre('');
-    setDateStarted('');
-    setDateFinished('');
-    setRating('');
+    // fetch("/logbook").then((res) =>
+    fetch("http://127.0.0.1:5000//logbook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_name: "testUser1",
+        title: "East of Eden",
+        author: "John Steinbeck",
+        rating: 4.5,
+        startDate: "Feb 2, 2024",
+        endDate: "Feb 12, 2024",
+      }),
+    })
+      .then((res) => res.json())
+      .then((bookData) => console.log("book data is", bookData));
+
+    setTitle("");
+    setAuthor("");
+    setGenre("");
+    setDateStarted("");
+    setDateFinished("");
+    setRating("");
   };
 
   return (
@@ -120,13 +153,17 @@ const BookLogForm = () => {
         />
 
         <label htmlFor="rating">Rating:</label>
-            <select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+        <select
+          id="rating"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
 
         <button type="submit">Log Book</button>
       </form>
