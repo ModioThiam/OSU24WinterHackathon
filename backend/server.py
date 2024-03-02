@@ -10,7 +10,7 @@ x = datetime.datetime.now()
 app = Flask(__name__)
  
 cors = CORS(app)
-# app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['CORS_HEADERS'] = 'Content-Type'
 # Route for seeing a data
 @app.route('/')
 def get_time():
