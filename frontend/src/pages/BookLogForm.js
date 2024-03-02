@@ -19,30 +19,23 @@ const BookLogForm = () => {
     //   body: JSON.stringify({ example: "example" }),
     // });
 
-    fetch("/logbook").then((res) =>
-      fetch(
-        "http://127.0.0.1:5000/logbook",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_name: "testUser1",
-            title: "East of Eden",
-            author: "John Steinbeck",
-            rating: 4.5,
-            startDate: "Feb 2, 2024",
-            endDate: "Feb 12, 2024",
-          }),
-        }
-        // ).then((res) =>
-        //   res.json().then((data) => {
-        //     // Setting a data from api
-        //     console.log("name is", data.Name);
-        //   })
-      )
-    );
+    // fetch("/logbook").then((res) =>
+    fetch("http://127.0.0.1:5000//logbook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_name: "testUser1",
+        title: "East of Eden",
+        author: "John Steinbeck",
+        rating: 4.5,
+        startDate: "Feb 2, 2024",
+        endDate: "Feb 12, 2024",
+      }),
+    })
+      .then((res) => res.json())
+      .then((bookData) => console.log("book data is", bookData));
 
     setTitle("");
     setAuthor("");

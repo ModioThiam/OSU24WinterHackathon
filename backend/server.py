@@ -53,7 +53,10 @@ def log_book():
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
         collection.insert_one({"user_name":user_name, "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
-    return "res"
+    return {'Name':"geek", 
+        "Age":"22",
+        "Date":x, 
+        "programming":"python"}
      
 # Running app
 if __name__ == '__main__':
