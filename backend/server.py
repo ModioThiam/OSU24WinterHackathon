@@ -34,13 +34,16 @@ def get_time():
  
 @app.route('/logbook',methods=["POST"])
 def log_book():
+    print("calling log book")
     data = request.get_json()
+    print("data is ", data)
     user_name = data['user_name']
     title = data['title']
     author = data['author']
     rating = data['rating']
     startDate = data['startDate']
     endDate = data['endDate']
+    
     # Adds to book list if there is already an account associated with the user name
     # Only adds the book if it's not already in the books array
     res = collection.find_one_and_update(
@@ -50,7 +53,7 @@ def log_book():
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
         collection.insert_one({"user_name":user_name, "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
-
+    return "res"
      
 # Running app
 if __name__ == '__main__':
