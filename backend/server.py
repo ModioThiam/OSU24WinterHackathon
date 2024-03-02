@@ -6,6 +6,7 @@ from flask_cors import CORS,cross_origin
 import pymongo
 from pymongo import MongoClient
 from flask import request
+from google_api import get_book_id, get_related_books, search_books
 
 # Connects to cluster and database
 cluster = MongoClient(
@@ -60,17 +61,12 @@ def log_book():
 
 @app.route('/getBooks',methods=['GET'])
 def get_books():
-    print("Searching book...")
-    # Returning an api for showing in  reactjs
-    data = {
-        'Title':"A Tale of Two Cities", 
-        "Author":"John Doe",
-        "Genre":"Fantasy", 
-        "Date Started":"1-1-2024",
-        "Date Ended":"1-5-2024",
-        "Rating": 5
-        }
-    return jsonify(data)
+    # need to find a way to get input string from frontend search bar, and call 
+    # search_books() function with that paramter
+    data = search_books("thriller")
+    return jsonify(data[0])
+
+    
 
 # Running app
 if __name__ == '__main__':
