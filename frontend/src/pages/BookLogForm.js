@@ -6,7 +6,7 @@ const BookLogForm = () => {
   const [genre, setGenre] = useState('');
   const [dateStarted, setDateStarted] = useState('');
   const [dateFinished, setDateFinished] = useState('');
-
+  const [rating, setRating] = useState(''); 
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +18,7 @@ const BookLogForm = () => {
     setGenre('');
     setDateStarted('');
     setDateFinished('');
+    setRating('');
   };
 
   return (
@@ -68,6 +69,15 @@ const BookLogForm = () => {
           value={dateFinished}
           onChange={(e) => setDateFinished(e.target.value)}
         />
+
+        <label htmlFor="rating">Rating:</label>
+            <select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
         <button type="submit">Log Book</button>
       </form>
