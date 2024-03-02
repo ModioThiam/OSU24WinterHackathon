@@ -1,0 +1,25 @@
+#booklog {
+    background-color: white;
+    position: relative;
+}
+
+.booklog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    position: relative;
+    padding-top: 0px;
+
+}
+
+
+
+.booklog-container h1 {
+    font-family: 'Raleway';
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 40px;
+
+}
