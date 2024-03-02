@@ -46,16 +46,14 @@ function Discover() {
                 {/* Display search results */}
                     <div>
                         <h2>Search Results:</h2>
+                        
                         <ul>
                         {searchResults && (
                             <div>
                                 <h2>Book Details:</h2>
-                                <p><strong>Title:</strong> {searchResults.Title}</p>
-                                <p><strong>Author:</strong> {searchResults.Author}</p>
-                                <p><strong>Genre:</strong> {searchResults.Genre}</p>
-                                <p><strong>Date Started:</strong> {searchResults['Date Started']}</p>
-                                <p><strong>Date Ended:</strong> {searchResults['Date Ended']}</p>
-                                <p><strong>Rating:</strong> {searchResults.Rating}</p>
+                                <p>Title: {searchResults["title"]}</p>
+                                <p>Author: {searchResults["authors"]}</p>
+                                <p>Description: {searchResults["description"]}</p>
                             </div>
                         )}
                         </ul>
