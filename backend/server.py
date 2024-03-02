@@ -63,7 +63,9 @@ def log_book():
 def get_books():
     # need to find a way to get input string from frontend search bar, and call 
     # search_books() function with that paramter
-    data = search_books("thriller")
+    seach_term = request.args.get('query')
+    print(seach_term)
+    data = search_books(seach_term)
     return jsonify(data[0])
 
     
