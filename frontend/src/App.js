@@ -1,7 +1,9 @@
 // Importing modules
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
+import BookLog from "./pages/BookLog";
 import LandingPage from './pages/LandingPage'
+import Discover from "./pages/Discover";
 
 function App() {
   // usestate for setting a javascript
@@ -35,6 +37,8 @@ function App() {
     <div className="App">
       <Navbar/>
       <LandingPage/>
+      <BookLog/>
+      <Discover/>
     </div>
     </>
   );
