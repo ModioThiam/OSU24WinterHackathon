@@ -19,7 +19,7 @@ def log_book(user_name, title, author, rating, startDate, endDate=None):
     )
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
-        collection.insert_one({"user_name":user_name, "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
+        collection.insert_one({"user_name":user_name, "currently_reading": [], "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
 
 def get_books(user_name):
     # Gets and returns the user's books array
