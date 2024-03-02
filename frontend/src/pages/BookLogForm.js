@@ -1,12 +1,62 @@
 import React, { useState } from "react";
 
+
 const BookLogForm = () => {
+<<<<<<< HEAD
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
   const [dateStarted, setDateStarted] = useState("");
   const [dateFinished, setDateFinished] = useState("");
   const [rating, setRating] = useState("");
+=======
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [genre, setGenre] = useState('');
+  const [dateStarted, setDateStarted] = useState('');
+  const [dateFinished, setDateFinished] = useState('');
+  const [rating, setRating] = useState(''); 
+  
+  const genreOptions = [
+    "Fiction",
+    "Nonfiction",
+    "Mystery",
+    "Thriller",
+    "Romance",
+    "Science Fiction",
+    "Fantasy",
+    "Horror",
+    "Historical Fiction",
+    "Biography",
+    "Autobiography",
+    "Memoir",
+    "Self-Help",
+    "Travel",
+    "History",
+    "Science",
+    "Psychology",
+    "Philosophy",
+    "Religion",
+    "Cooking",
+    "Art",
+    "Poetry",
+    "Drama",
+    "Comics",
+    "Graphic Novels",
+    "Young Adult",
+    "Adventure",
+    "Crime",
+    "Western",
+    "Dystopian",
+    "Literary Fiction",
+    "Humor",
+    "Satire",
+    "Classic",
+    "Fairy Tales",
+    "Mythology",
+    "Science Fiction/Fantasy"
+  ];
+>>>>>>> main
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -69,13 +119,21 @@ const BookLogForm = () => {
           required
         />
 
+        {/* Genre */}
         <label htmlFor="genre">Genre:</label>
-        <input
-          type="text"
+        <select
           id="genre"
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
-        />
+          required
+        >
+          <option value="">Select Genre</option>
+          {genreOptions.map((genreOption, index) => (
+            <option key={index} value={genreOption}>{genreOption}</option>
+          ))}
+        </select>
+
+        
 
         <label htmlFor="dateStarted">Date Started:</label>
         <input
