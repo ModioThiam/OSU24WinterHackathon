@@ -21,13 +21,16 @@
 }
 
 .readingHistory {
-  padding-left: 5rem;
+  font-family: 'Raleway';
+  padding-left: 2rem;
+  /* padding-right: 10%; */
   display: flex;
   background: rgba(149, 72, 31, 0.686);
   background-image: url("https://m.media-amazon.com/images/I/8162wgFO8rL.__AC_SX300_SY300_QL70_FMwebp_.jpg");
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 15rem;
+  overflow-x: auto;
 }
 
 .readingHistory div {
@@ -42,8 +45,50 @@
     0px -1px 0px rgba(0, 0, 0, 0.7);
 }
 
+
 .readingHistory text {
+  font-family: 'Raleway';
   font-weight: bold;
-  margin-right: 3rem;
+  margin-right: 9rem;
   font-size: 3rem;
+  max-width: 3rem; 
+  
+}
+
+.booklogForm{
+  padding: 50px 50px;
+  font-family: 'Raleway';
+}
+.booklogForm h2{
+    text-align: center;
+    font-size: 3rem; /* Adjust font size */
+    font-weight: normal;
+    padding-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px; /* Adjust the maximum width as needed */
+  margin: auto;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
 }
