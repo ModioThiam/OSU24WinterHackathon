@@ -12,15 +12,13 @@ function BookLog() {
   const getHistory = async () => {
     let res = await fetch("http://127.0.0.1:5000//readingHistory");
     const data = await res.json();
-    // History will be limited to 5 books
-    setHistory(data.slice(0, 5));
+    setHistory(data);
   };
 
   const getReadingList = async () => {
     let res = await fetch("http://127.0.0.1:5000/readingList");
     const data = await res.json();
-    // History will be limited to 5 books
-    setReadingList(data.slice(0, 5));
+    setReadingList(data);
   };
 
   useEffect(() => {
