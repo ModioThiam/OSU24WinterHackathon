@@ -102,7 +102,7 @@ function Discover() {
       <div id="discover">
         <div className="discover-container">
           <h1>Discover New Books</h1>
-          <h2>Search Based on Keywords</h2>
+          <p>Search for books to add to your To-Read List </p>
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
@@ -148,6 +148,7 @@ function Discover() {
           </div>
 
           <h2>Get Book Recommendations</h2>
+          <p>Enter an Author and Category to get personalized book reccomendations.</p>
 
           <form onSubmit={handleRecommendationSubmit}>
             {/* Author */}
