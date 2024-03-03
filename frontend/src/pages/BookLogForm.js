@@ -67,11 +67,11 @@ const BookLogForm = () => {
       },
       body: JSON.stringify({
         user_name: "testUser1",
-        title: "The Giver",
-        author: "Lois Lowry",
-        rating: 5,
-        startDate: "Jan 3, 2024",
-        endDate: "Jan 14, 2024",
+        bookTitle: title,
+        bookAuthor: author,
+        bookRating: 5,
+        bookStartDate: dateStarted,
+        bookEndDate: dateFinished,
       }),
     })
       .then((res) => res.json())

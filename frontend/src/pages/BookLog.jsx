@@ -31,13 +31,13 @@ function BookLog() {
     getReadingList();
   }, []);
 
-  useEffect(() => {
-    console.log("history changed to", history);
-  }, [history]);
+  // useEffect(() => {
+  //   console.log("history changed to", history);
+  // }, [history]);
 
-  useEffect(() => {
-    console.log("reading list changed to", readingList);
-  }, [readingList]);
+  // useEffect(() => {
+  //   console.log("reading list changed to", readingList);
+  // }, [readingList]);
 
 
   return (
