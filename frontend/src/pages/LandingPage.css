@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 500vh; */
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
   overflow: hidden;
@@ -13,10 +13,10 @@
   color: #fff;
   z-index: 1001;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 250px;
   margin-left: 80px;
   margin-right: 80px;
-  margin-bottom: 180px; 
+  margin-bottom: 100px; 
 }
 
 .landingpage-content h1 {
