@@ -5,7 +5,8 @@ function AboutPage() {
   return (
     <>
       <div id="about">
-        <div className="about-contianer">
+        <div className="about-container">
+          <div className="about-content-container">
           <div className="about-content">
             <h1>About</h1>
             <div className="about-h3"></div>
@@ -45,6 +46,12 @@ function AboutPage() {
                 Log Book
               </button>
             </div>
+          </div>
+          </div>
+          <div className="about-video">
+            <video autoPlay muted loop id="aboutVideo">
+              <source src="images/reading2.mp4" />
+            </video>
           </div>
         </div>
       </div>
