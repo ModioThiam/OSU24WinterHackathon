@@ -13,6 +13,7 @@
   padding-top: 30px;
   font-family: "Raleway";
   font-weight: normal;
+  background-color: rgb(223, 223, 223);
 }
 
 .discover-container h1 {
@@ -56,8 +57,13 @@
 
 .card h2 {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 10px;
+
+}
+
+.card p{
+  margin-bottom: 10px;
 }
 
 .card:hover {
