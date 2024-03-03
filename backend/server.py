@@ -6,7 +6,7 @@ from flask_cors import CORS,cross_origin
 import pymongo
 from pymongo import MongoClient
 from flask import request
-from google_api import get_book, search_books
+from google_api import get_book, search_books, get_book_suggestions
 
 # Connects to cluster and database
 cluster = MongoClient(
@@ -72,6 +72,21 @@ def get_books():
     
     # return jsonify(data[0])
 
+@app.route('/getRecommendations', methods=['GET'])
+def get_recommendations():
+    author = request.args.get('author')
+    category = request.args.get('category')
+    print(author,category)
+    data = get_book_suggestions(author,category)
+
+    if data:
+        print("this is all the data",data)
+        return jsonify(data[:6])
+    else:
+        return jsonify({})
+
+
+    
 @app.route('/getBookz',methods=['GET'])
 def get_bookz():
     # need to find a way to get input string from frontend search bar, and call 
@@ -101,22 +116,29 @@ def add_to_reading_list():
     print("data is ", data)
     title = data['bookTitle']
     authors = data['bookAuthors']
-    print("title and authors", title, authors)
+    thumbnail = data['bookThumbnail']
+
+    print("title and authors", title, authors, thumbnail)
 
         # Adds to book list if there is already an account associated with the user name
     # Only adds the book if it's not already in the books array
     res = collection.find_one_and_update(
         {"user_name": user_name},
-        {"$addToSet": {"toRead": {"title": title, "author": authors}}}
+        {"$addToSet": {"toRead": {"title": title, "author": authors,"thumbnail":thumbnail}}}
     )
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
-        collection.insert_one({"user_name":user_name, "toRead": {"title":title, "author":authors}})
+        collection.insert_one({"user_name":user_name, "toRead": {"title":title, "author":authors,"thumbnail":thumbnail}})
 
     return {"hi":"hi"}
 
+@app.route('/readingList',methods=['GET'])
+def get_reading_list():
+    # Gets and returns the user's books array
+    res = collection.find({"user_name": "testUser1"})[0]['toRead']
+    return res
 
-    
+
 
 # Running app
 if __name__ == '__main__':

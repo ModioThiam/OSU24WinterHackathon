@@ -13,6 +13,11 @@ function truncateDescription(description, maxLength = 100) {
 function Discover() {
   const [searchWord, setSearchWord] = useState("");
   const [searchResults, setSearchResults] = useState(null);
+  const [recommendationAuthor, setRecommendationAuthor] =  useState("");
+  const [recommendationCategory, setRecommendationCategory] = useState("");
+  const [recommendationResults, setRecommendationResults] = useState(null);
+  // const [author, setAuthor] = useState("");
+  // const [category, setCategory] = useState("");
 
   const handleSearchChange = (e) => {
     setSearchWord(e.target.value);
@@ -39,8 +44,30 @@ function Discover() {
     }
   };
 
-  const handleAddBook = async (title, authors) => {
-    console.log("adding book", title, authors);
+  const handleRecommendationSubmit= async (e) => {
+    e.preventDefault();
+
+    try {
+      setRecommendationResults(null);
+      // need to find a way to send user input to backend!
+      const response = await fetch(
+        `http://127.0.0.1:5000/getRecommendations?author=${recommendationAuthor}&category=${recommendationCategory}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch search results");
+      }
+
+      const data = await response.json();
+      console.log("Fetched", data);
+      
+      setRecommendationResults(data); // Update search results state
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleAddBook = async (title, authors, thumbnail) => {
+    console.log("adding book", title, authors, thumbnail);
     fetch("http://127.0.0.1:5000/addToReadingList", {
       method: "POST",
       headers: {
@@ -48,7 +75,8 @@ function Discover() {
       },
       body: JSON.stringify({
         bookTitle: title,
-        bookAuthors: authors,
+        bookAuthors: authors, 
+        bookThumbnail:thumbnail
       }),
     })
       .then((res) => res.json())
@@ -60,10 +88,11 @@ function Discover() {
       <div id="discover">
         <div className="discover-container">
           <h1>Discover New Books</h1>
+          <h2>Search Based on Keywords</h2>
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
-              placeholder="Search for books..."
+              placeholder="Insert keywords..."
               value={searchWord}
               onChange={handleSearchChange}
             />
@@ -71,20 +100,28 @@ function Discover() {
           </form>
           {/* Display search results */}
 
-          <h2>Search Results:</h2>
-          <h2>Books</h2>
+          {searchResults && (
+            <>
+              <h2>Search Results:</h2>
+              <h2>Books</h2>
+            </>
+          )}
+          
           <div className="cards-container-box">
+          
             {searchResults &&
               searchResults.map((book) => (
+                
                 <div className="card" key={book.title}>
+                  <img src={book.thumbnail}></img>
                   <h2>{book.title}</h2>
-                  <p>{book.thumbnail}</p>
-                  <p>Author: {book.authors}</p>
-                  <p>Description: {truncateDescription(book.description)}</p>
+                  
+                  <p><strong>Author:</strong> {book.authors}</p>
+                  <p><strong>Description:</strong> {truncateDescription(book.description)}</p>
                   <button
                     className="add-book-button"
                     onClick={() => {
-                      handleAddBook(book.title, book.authors);
+                      handleAddBook(book.title, book.authors, book.thumbnail);
                     }}
                   >
                     Add Book
@@ -92,6 +129,34 @@ function Discover() {
                 </div>
               ))}
           </div>
+
+          <h2>Get Book Recommendation</h2>
+          
+          {/* <form onSubmit={handleRecommendationSubmit}> */}
+            
+          {/* Author */}
+          {/* <label htmlFor="recommendationAuthor">Author:</label>
+          <input
+            type="text"
+            id="recommendationAuthor"
+            value={recommendationAuthor}
+            onChange={(e) => setRecommendationAuthor(e.target.value)}
+            required
+          /> */}
+
+          {/* Category */}
+          {/* <label htmlFor="recommendationCategory">Category:</label>
+              <input
+                type="text"
+                id="recommendationCategory"
+                value={recommendationCategory}
+                onChange={(e) => setRecommendationCategory(e.target.value)}
+                required
+              />
+
+          <button type="submit">Get Recommendation</button>
+         </form> */}
+
         </div>
       </div>
     </>

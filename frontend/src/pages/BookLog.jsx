@@ -7,6 +7,8 @@ import Book from "./Book";
 function BookLog() {
   const [history, setHistory] = useState([]);
   const [thumbnail, setThumbnail] = useState("");
+  const [readingList, setReadingList] = useState([]);
+
   const getHistory = async () => {
     let res = await fetch("http://127.0.0.1:5000//readingHistory");
     const data = await res.json();
@@ -14,13 +16,29 @@ function BookLog() {
     setHistory(data.slice(0, 5));
   };
 
+  const getReadingList  = async () => {
+    let res = await fetch("http://127.0.0.1:5000/readingList");
+    const data = await res.json();
+    // History will be limited to 5 books
+    setReadingList(data.slice(0, 5));
+  };
+
   useEffect(() => {
     getHistory();
   }, []);
 
   useEffect(() => {
+    getReadingList();
+  }, []);
+
+  useEffect(() => {
     console.log("history changed to", history);
   }, [history]);
+
+  useEffect(() => {
+    console.log("reading list changed to", readingList);
+  }, [readingList]);
+
 
   return (
     <>
@@ -36,10 +54,22 @@ function BookLog() {
           />
         ))}
       </div>
+      <div className="readingHistory">
+        <text>To Read List</text>
+        {readingList.map((book) => (
+          <Book
+            props={{
+              title: book.title,
+              author: book.author,
+              image: book.thumbnail,
+            }}
+          />
+        ))}
+      </div>
       <div id="booklog">
         <div className="container">
           <div className="booklog-container">
-            <div className="cards-container-box"></div>
+            {/* <div className="cards-container-box"></div> */}
             <BookLogForm />
           </div>
         </div>

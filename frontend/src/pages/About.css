@@ -1,0 +1,56 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: -1;
+    overflow: hidden;
+}
+
+.about-content {
+    color: black;
+    z-index: 1001;
+    text-align: center;
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Set a maximum width */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white; /* Set background color */
+}
+
+.about-content h1 {
+    font-family: 'Raleway';
+    font-size: 6rem; /* Adjust font size */
+    font-weight: normal;
+    margin: 20px 0; /* Adjust margin */
+}
+
+.about-content h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: left;
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding */
+}
+
+/* buttons */
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap:5rem;
+    padding: 20px 20px;
+
+}
+
+button {
+    background-color: rgba(149, 72, 31, 0.686);
+    color: black; 
+    padding: 20px 20px; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    
+}
+
