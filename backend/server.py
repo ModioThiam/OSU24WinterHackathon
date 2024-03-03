@@ -6,7 +6,7 @@ from flask_cors import CORS,cross_origin
 import pymongo
 from pymongo import MongoClient
 from flask import request
-from google_api import get_book_id, get_related_books, search_books
+from google_api import get_book, search_books
 
 # Connects to cluster and database
 cluster = MongoClient(
@@ -73,6 +73,13 @@ def get_books():
         return jsonify({})
     
     # return jsonify(data[0])
+
+
+@app.route('/readingHistory',methods=['GET'])
+def get_history():
+    # Gets and returns the user's books array
+    res = collection.find({"user_name": "testUser1"})[0]['books']
+    return res
 
     
 

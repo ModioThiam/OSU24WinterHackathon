@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-
 const BookLogForm = () => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [genre, setGenre] = useState('');
-  const [dateStarted, setDateStarted] = useState('');
-  const [dateFinished, setDateFinished] = useState('');
-  const [rating, setRating] = useState(''); 
-  
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [dateStarted, setDateStarted] = useState("");
+  const [dateFinished, setDateFinished] = useState("");
+  const [rating, setRating] = useState("");
+
   const genreOptions = [
     "Fiction",
     "Nonfiction",
@@ -46,9 +45,8 @@ const BookLogForm = () => {
     "Classic",
     "Fairy Tales",
     "Mythology",
-    "Science Fiction/Fantasy"
+    "Science Fiction/Fantasy",
   ];
-
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -69,11 +67,11 @@ const BookLogForm = () => {
       },
       body: JSON.stringify({
         user_name: "testUser1",
-        title: "East of Eden",
-        author: "John Steinbeck",
-        rating: 4.5,
-        startDate: "Feb 2, 2024",
-        endDate: "Feb 12, 2024",
+        title: "The Giver",
+        author: "Lois Lowry",
+        rating: 5,
+        startDate: "Jan 3, 2024",
+        endDate: "Jan 14, 2024",
       }),
     })
       .then((res) => res.json())
@@ -121,11 +119,11 @@ const BookLogForm = () => {
         >
           <option value="">Select Genre</option>
           {genreOptions.map((genreOption, index) => (
-            <option key={index} value={genreOption}>{genreOption}</option>
+            <option key={index} value={genreOption}>
+              {genreOption}
+            </option>
           ))}
         </select>
-
-        
 
         <label htmlFor="dateStarted">Date Started:</label>
         <input
