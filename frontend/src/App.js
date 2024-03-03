@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import BookLog from "./pages/BookLog";
 import LandingPage from './pages/LandingPage'
 import Discover from "./pages/Discover";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   // usestate for setting a javascript
@@ -37,6 +38,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <LandingPage/>
+      <AboutPage/>
       <BookLog/>
       <Discover/>
     </div>
