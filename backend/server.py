@@ -66,7 +66,13 @@ def get_books():
     seach_term = request.args.get('query')
     print(seach_term)
     data = search_books(seach_term)
-    return jsonify(data[0])
+    if data:
+        print("this is all the data",data)
+        return jsonify(data[:6])
+    else:
+        return jsonify({})
+    
+    # return jsonify(data[0])
 
     
 
