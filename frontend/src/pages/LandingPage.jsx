@@ -8,7 +8,6 @@ function LandingPage() {
         <div className="landingpage-content">
           <h1>The Reading Corner</h1>
           <h3>Track Your Reads and Discover More</h3>
-
           <video autoPlay muted loop id="myVideo">
             <source src="images/reading-video.mp4" />
           </video>
