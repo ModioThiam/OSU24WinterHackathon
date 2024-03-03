@@ -86,7 +86,7 @@ const BookLogForm = () => {
   };
 
   return (
-    <div>
+    <div className="booklogForm">
       <h2>Log a Book</h2>
       <form onSubmit={handleFormSubmit}>
         {/* Title */}
@@ -109,7 +109,7 @@ const BookLogForm = () => {
           required
         />
 
-        {/* Genre */}
+        {/* Genre
         <label htmlFor="genre">Genre:</label>
         <select
           id="genre"
@@ -123,7 +123,7 @@ const BookLogForm = () => {
               {genreOption}
             </option>
           ))}
-        </select>
+        </select> */}
 
         <label htmlFor="dateStarted">Date Started:</label>
         <input
