@@ -33,7 +33,7 @@ function AboutPage() {
               Personalized Recommendations: Receive tailored book
               recommendations based on your author of choice and book category.
             </h3>
-            <div class="btn-container">
+            {/* <div class="btn-container">
               <button onclick="window.open('./#about')">My Library</button>
               <button onclick="location.href= './#chatbot-section'">
                 Discover
@@ -41,7 +41,7 @@ function AboutPage() {
               <button onclick="location.href= './#chatbot-section'">
                 Log Book
               </button>
-            </div>
+            </div> */}
           </div>
           </div>
           <div className="about-video">
