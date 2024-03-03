@@ -37,21 +37,22 @@ def get_time():
 def log_book():
     data = request.get_json()
     user_name = data['user_name']
-    title = data['title']
-    author = data['author']
-    rating = data['rating']
-    startDate = data['startDate']
-    endDate = data['endDate']
-    
+    title = data['bookTitle']
+    author = data['bookAuthor']
+    rating = data['bookRating']
+    startDate = data['bookStartDate']
+    endDate = data['bookEndDate']
+    data = get_book(title, author)
+    image = data['volumeInfo']['imageLinks']['smallThumbnail']
     # Adds to book list if there is already an account associated with the user name
     # Only adds the book if it's not already in the books array
     res = collection.find_one_and_update(
         {"user_name": user_name},
-        {"$addToSet": {"books": {"title": title, "author": author, "rating": rating, "startDate": startDate, "endDate": endDate}}}
+        {"$addToSet": {"books": {"title": title, "author": author, "rating": rating, "image":image, "startDate": startDate, "endDate": endDate}}}
     )
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
-        collection.insert_one({"user_name":user_name, "toRead":[], "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
+        collection.insert_one({"user_name":user_name, "toRead":[], "books":[{"title":title, "author":author, "rating":rating, "image":image,"startDate":startDate, "endDate":endDate}]})
     return {'Name':"geek", 
         "Age":"22",
         "Date":x, 
@@ -80,27 +81,25 @@ def get_recommendations():
     data = get_book_suggestions(author,category)
 
     if data:
-        print("this is all the data",data)
+        print("this is all the data recommendations",len(data))
         return jsonify(data[:6])
     else:
         return jsonify({})
 
 
     
-@app.route('/getBookz',methods=['GET'])
-def get_bookz():
-    # need to find a way to get input string from frontend search bar, and call 
-    # search_books() function with that paramter
-    title = "The Giver"
-    author = "Lois Lowry"
-    print("title and author", title, author)
-    data = get_book(title, author)
-    if data:
-        return jsonify(data)
-    else:
-        return jsonify({})
+# @app.route('/getBookz',methods=['GET'])
+# def get_bookz():
+#     title = "The Giver"
+#     author = "Lois Lowry"
+#     print("title and author", title, author)
+#     data = get_book(title, author)
+#     if data:
+#         return jsonify(data)
+#     else:
+#         return jsonify({})
     
-    # return jsonify(data[0])
+#     # return jsonify(data[0])
 
 
 @app.route('/readingHistory',methods=['GET'])

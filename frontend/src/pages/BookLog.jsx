@@ -16,7 +16,7 @@ function BookLog() {
     setHistory(data.slice(0, 5));
   };
 
-  const getReadingList  = async () => {
+  const getReadingList = async () => {
     let res = await fetch("http://127.0.0.1:5000/readingList");
     const data = await res.json();
     // History will be limited to 5 books
@@ -31,14 +31,13 @@ function BookLog() {
     getReadingList();
   }, []);
 
-  useEffect(() => {
-    console.log("history changed to", history);
-  }, [history]);
+  // useEffect(() => {
+  //   console.log("history changed to", history);
+  // }, [history]);
 
-  useEffect(() => {
-    console.log("reading list changed to", readingList);
-  }, [readingList]);
-
+  // useEffect(() => {
+  //   console.log("reading list changed to", readingList);
+  // }, [readingList]);
 
   return (
     <>
@@ -55,7 +54,7 @@ function BookLog() {
         ))}
       </div>
       <div className="readingHistory">
-        <text>To Read List</text>
+        <text>To-Read List</text>
         {readingList.map((book) => (
           <Book
             props={{
