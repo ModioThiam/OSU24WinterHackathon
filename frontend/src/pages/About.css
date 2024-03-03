@@ -1,29 +1,54 @@
 .about-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, .5);
+    height: 790px;
+    background-color:whitesmoke;
     z-index: -1;
-    overflow: hidden;
+    padding-left: 20px;
+    /* overflow: hidden; */
+
 }
 
+.about-content-container {
+    width: 90%; /* Adjust width as needed */
+    margin-right: 50px; 
+}
 .about-content {
+    position: relative;
     color: black;
     z-index: 1001;
     text-align: center;
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px; /* Set a maximum width */
-    padding: 20px;
+    max-height: 800px;
+    max-width: 900px;
+    padding: 10px; /* Adjust padding as needed */
     border-radius: 10px;
     background-color: white; /* Set background color */
+    /* margin-right: 400px; */
+    overflow: auto;
+}
+
+.about-video {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 50%;
+    height: 100%;
+}
+
+
+#aboutVideo {
+
+    width: 80%; /* Make the video fill the container */
+    height: 100%; /* Maintain aspect ratio */
+    right: 10px; 
 }
 
 .about-content h1 {
     font-family: 'Raleway';
-    font-size: 6rem; /* Adjust font size */
+    font-size: 5rem; /* Adjust font size */
     font-weight: normal;
-    margin: 20px 0; /* Adjust margin */
+    padding-top: 20px;
 }
 
 .about-content h3 {
@@ -31,8 +56,9 @@
     font-weight: normal;
     text-align: left;
     margin: 0; /* Remove default margin */
-    padding: 20px; /* Add padding */
+    padding: 10px; /* Decrease padding */
 }
+
 
 /* buttons */
 .btn-container{
