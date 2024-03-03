@@ -69,7 +69,7 @@ function Discover() {
                         ))}
                 </div>
             </div>
-            book.volumeInfo.imageLinks.thumbnail
+            
             
             
         </div>
