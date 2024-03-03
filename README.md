@@ -1,6 +1,7 @@
 # The Reading Corner
 OSU Winter 2024 Hackathon Project
 <br>
+![image](https://github.com/ModioThiam/OSU24WinterHackathon/assets/79183545/89489c96-8cd1-40c3-8733-b736dabaf467)
 <br>
 ## Introduction
 This application allows a user to track books they've read, add books they'd like to read, and has several features to help the user discover new books they might be interested in.
