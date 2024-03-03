@@ -136,5 +136,6 @@ def search_books(query: str, max_results: int = 10):
     else:
         print('Failed to retrieve books. Status code:', response.status_code)
         return []
+
     
 
