@@ -10,7 +10,7 @@
     align-items: center;
     color: gray;
     position: relative;
-    padding-top: 0px;
+    padding-top: 100px;
 }
 
 .discover-container h1 {
@@ -18,4 +18,45 @@
     font-size: 3rem;
     font-weight: normal;
     margin: 40px;
+}
+
+.cards-container-box {
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    position: relative;
+    margin: 40px;
+    text-align: center;
+}
+
+.card {
+    width: 200px; /* Set the width of each card */
+    height: 250px; /* Set the height of each card */
+    box-shadow: 0 0 3px 2px #fff;
+    margin: 20px;
+    color: #144272;
+    border-radius: 10px;
+    background-color: lightcoral;
+    overflow: hidden;
+
+}
+.card:hover {
+    box-shadow: 0 0 6px 3px #fff;
+}
+
+.add-book-button {
+    background-color: #144272;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top:auto;
+}
+
+.add-book-button:hover {
+    background-color: #0a304e;
 }
