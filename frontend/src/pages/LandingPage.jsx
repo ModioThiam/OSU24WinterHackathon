@@ -11,9 +11,9 @@ function LandingPage() {
           <video autoPlay muted loop id="myVideo">
             <source src="images/reading-video.mp4" />
           </video>
-          <div className="btn-holder">
+          {/* <div className="btn-holder">
             <button className="start-btn">Start Now</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
