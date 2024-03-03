@@ -64,7 +64,6 @@ def get_book_suggestions(author: str, category: str, max_results=5):
         return None
 
 
-
 def main():
     # Test code prints out books from same author and category
     popular_books = {
@@ -126,7 +125,8 @@ def search_books(query: str, max_results: int = 10):
                 book_info = {
                     'title': item['volumeInfo']['title'],
                     'authors': item['volumeInfo'].get('authors', []),
-                    'description': item['volumeInfo'].get('description', 'No description available')
+                    'description': item['volumeInfo'].get('description', 'No description available'),
+                    'thumbnail': item['volumeInfo']['imageLinks'].get('thumbnail')
                 }
                 books.append(book_info)
             return books
