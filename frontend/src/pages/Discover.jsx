@@ -61,14 +61,15 @@ function Discover() {
                     {searchResults && searchResults.map(book => (
                         <div className="card" key={book.title}>
                             <h2>{book.title}</h2>
+                            <p>{book.thumbnail}</p>
                             <p>Author: {book.authors}</p>
-                            <p>Description: {truncateDescription(book.description)}</p>
+                            <p>Description: {truncateDescription(book.description)}</p>                           
                             <button className="add-book-button">Add Book</button>
                         </div>
                         ))}
                 </div>
             </div>
-                        
+            book.volumeInfo.imageLinks.thumbnail
             
             
         </div>
