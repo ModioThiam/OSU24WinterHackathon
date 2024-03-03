@@ -8,58 +8,9 @@ const BookLogForm = () => {
   const [dateFinished, setDateFinished] = useState("");
   const [rating, setRating] = useState("");
 
-  const genreOptions = [
-    "Fiction",
-    "Nonfiction",
-    "Mystery",
-    "Thriller",
-    "Romance",
-    "Science Fiction",
-    "Fantasy",
-    "Horror",
-    "Historical Fiction",
-    "Biography",
-    "Autobiography",
-    "Memoir",
-    "Self-Help",
-    "Travel",
-    "History",
-    "Science",
-    "Psychology",
-    "Philosophy",
-    "Religion",
-    "Cooking",
-    "Art",
-    "Poetry",
-    "Drama",
-    "Comics",
-    "Graphic Novels",
-    "Young Adult",
-    "Adventure",
-    "Crime",
-    "Western",
-    "Dystopian",
-    "Literary Fiction",
-    "Humor",
-    "Satire",
-    "Classic",
-    "Fairy Tales",
-    "Mythology",
-    "Science Fiction/Fantasy",
-  ];
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // const response = fetch("http://127.0.0.1:5000/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ example: "example" }),
-    // });
-
-    // fetch("/logbook").then((res) =>
     fetch("http://127.0.0.1:5000//logbook", {
       method: "POST",
       headers: {
@@ -108,22 +59,6 @@ const BookLogForm = () => {
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
-
-        {/* Genre
-        <label htmlFor="genre">Genre:</label>
-        <select
-          id="genre"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-          required
-        >
-          <option value="">Select Genre</option>
-          {genreOptions.map((genreOption, index) => (
-            <option key={index} value={genreOption}>
-              {genreOption}
-            </option>
-          ))}
-        </select> */}
 
         <label htmlFor="dateStarted">Date Started:</label>
         <input
