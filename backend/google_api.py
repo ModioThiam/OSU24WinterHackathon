@@ -64,6 +64,7 @@ def get_book_suggestions(author: str, category: str, max_results=5):
         return None
 
 
+
 def main():
     # Test code prints out books from same author and category
     popular_books = {
@@ -103,3 +104,37 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def search_books(query: str, max_results: int = 10):
+    """
+    Search books using the Google Books API.
+    
+    :param query: The search query.
+    :param max_results: Maximum number of results to retrieve.
+    :return: List of books matching the query.
+    """
+    url = 'https://www.googleapis.com/books/v1/volumes'
+    params = {'q': query, 'maxResults': max_results}
+    
+    response = requests.get(url, params=params)
+    
+    if response.status_code == 200:
+        data = response.json()
+        if 'items' in data:
+            books = []
+            for item in data['items']:
+                book_info = {
+                    'title': item['volumeInfo']['title'],
+                    'authors': item['volumeInfo'].get('authors', []),
+                    'description': item['volumeInfo'].get('description', 'No description available')
+                }
+                books.append(book_info)
+            return books
+        else:
+            print('No books found for the query:', query)
+            return []
+    else:
+        print('Failed to retrieve books. Status code:', response.status_code)
+        return []
+    
+
