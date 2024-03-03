@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: gray;
+    color: rgb(53, 51, 51);
     position: relative;
     padding-top: 100px;
 }
@@ -22,32 +22,40 @@
 
 .cards-container-box {
     width: 75%;
-    margin: auto;
+    margin: 40px auto; /* Center horizontally with auto margins for left and right sides */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
-    position: relative;
-    margin: 40px;
+    position: center;
     text-align: center;
 }
 
 .card {
-    width: 200px; /* Set the width of each card */
-    height: 250px; /* Set the height of each card */
-    box-shadow: 0 0 3px 2px #fff;
+    width: 390px; /* Set the width of each card */
+    height: 230px; /* Set the height of each card */
     margin: 20px;
-    color: #144272;
     border-radius: 10px;
-    background-color: lightcoral;
+    background-image: url("https://m.media-amazon.com/images/I/8162wgFO8rL.__AC_SX300_SY300_QL70_FMwebp_.jpg");
     overflow: hidden;
-
 }
+
+.card img{
+    float: left;
+    padding:10px
+}
+
+.card h2{
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
 .card:hover {
     box-shadow: 0 0 6px 3px #fff;
 }
 
 .add-book-button {
-    background-color: #144272;
+    background-color:rgba(149, 72, 31, 0.686);
     color: white;
     border: none;
     padding: 10px 20px;
