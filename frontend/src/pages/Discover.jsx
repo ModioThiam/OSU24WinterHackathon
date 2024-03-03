@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Discover.css";
+import "../css/Discover.css";
 
 function truncateDescription(description, maxLength = 100) {
   if (description.length > maxLength) {
@@ -13,7 +13,7 @@ function truncateDescription(description, maxLength = 100) {
 function Discover() {
   const [searchWord, setSearchWord] = useState("");
   const [searchResults, setSearchResults] = useState(null);
-  const [recommendationAuthor, setRecommendationAuthor] =  useState("");
+  const [recommendationAuthor, setRecommendationAuthor] = useState("");
   const [recommendationCategory, setRecommendationCategory] = useState("");
   const [recommendationResults, setRecommendationResults] = useState(null);
   // const [author, setAuthor] = useState("");
@@ -39,12 +39,13 @@ function Discover() {
       const data = await response.json();
       console.log("Fetched", data);
       setSearchResults(data); // Update search results state
+      console.log("search results are now:", data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  const handleRecommendationSubmit= async (e) => {
+  const handleRecommendationSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -58,9 +59,22 @@ function Discover() {
       }
 
       const data = await response.json();
-      console.log("Fetched", data);
-      
+      console.log("Fetched", data.length);
+
       setRecommendationResults(data); // Update search results state
+      console.log("Recommendations are now:", data);
+      data.map((book) =>
+        console.log(
+          "VOLUME authors, title, image",
+          book.volumeInfo,
+          book.volumeInfo.authors,
+          book.volumeInfo.title,
+          book.volumeInfo.imageLinks &&
+            book.volumeInfo.imageLinks.smallThumbnail
+        )
+      );
+      // console.log("vol info is", data[0].volumeInfo);
+      // console.log("image is", data[0].volumeInfo.imageLinks.smallThumbnail);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -75,8 +89,8 @@ function Discover() {
       },
       body: JSON.stringify({
         bookTitle: title,
-        bookAuthors: authors, 
-        bookThumbnail:thumbnail
+        bookAuthors: authors,
+        bookThumbnail: thumbnail,
       }),
     })
       .then((res) => res.json())
@@ -106,18 +120,21 @@ function Discover() {
               <h2>Books</h2>
             </>
           )}
-          
+
           <div className="cards-container-box">
-          
             {searchResults &&
               searchResults.map((book) => (
-                
                 <div className="card" key={book.title}>
                   <img src={book.thumbnail}></img>
                   <h2>{book.title}</h2>
-                  
-                  <p><strong>Author:</strong> {book.authors}</p>
-                  <p><strong>Description:</strong> {truncateDescription(book.description)}</p>
+
+                  <p>
+                    <strong>Author:</strong> {book.authors}
+                  </p>
+                  <p>
+                    <strong>Description:</strong>{" "}
+                    {truncateDescription(book.description)}
+                  </p>
                   <button
                     className="add-book-button"
                     onClick={() => {
@@ -130,33 +147,67 @@ function Discover() {
               ))}
           </div>
 
-          <h2>Get Book Recommendation</h2>
-          
-          {/* <form onSubmit={handleRecommendationSubmit}> */}
-            
-          {/* Author */}
-          {/* <label htmlFor="recommendationAuthor">Author:</label>
-          <input
-            type="text"
-            id="recommendationAuthor"
-            value={recommendationAuthor}
-            onChange={(e) => setRecommendationAuthor(e.target.value)}
-            required
-          /> */}
+          <h2>Get Book Recommendations</h2>
 
-          {/* Category */}
-          {/* <label htmlFor="recommendationCategory">Category:</label>
-              <input
-                type="text"
-                id="recommendationCategory"
-                value={recommendationCategory}
-                onChange={(e) => setRecommendationCategory(e.target.value)}
-                required
-              />
+          <form onSubmit={handleRecommendationSubmit}>
+            {/* Author */}
+            <label htmlFor="recommendationAuthor">Author:</label>
+            <input
+              type="text"
+              id="recommendationAuthor"
+              value={recommendationAuthor}
+              onChange={(e) => setRecommendationAuthor(e.target.value)}
+              required
+            />
 
-          <button type="submit">Get Recommendation</button>
-         </form> */}
+            {/* Category */}
+            <label htmlFor="recommendationCategory">Category:</label>
+            <input
+              type="text"
+              id="recommendationCategory"
+              value={recommendationCategory}
+              onChange={(e) => setRecommendationCategory(e.target.value)}
+              required
+            />
 
+            <button type="submit">Get Recommendations</button>
+          </form>
+
+          <div className="cards-container-box">
+            {recommendationResults &&
+              recommendationResults.map((book) => (
+                <div className="card" key={book.volumeInfo.authors}>
+                  <img
+                    src={
+                      book.volumeInfo.imageLinks &&
+                      book.volumeInfo.imageLinks.smallThumbnail
+                    }
+                  ></img>
+                  <h2>{book.volumeInfo.title}</h2>
+
+                  <p>
+                    <strong>Author:</strong> {book.volumeInfo.authors}
+                  </p>
+                  <p>
+                    <strong>Description:</strong>{" "}
+                    {book.volumeInfo.description &&
+                      truncateDescription(book.volumeInfo.description)}
+                  </p>
+                  <button
+                    className="add-book-button"
+                    onClick={() => {
+                      handleAddBook(
+                        book.volumeInfo.title,
+                        book.volumeInfo.authors,
+                        book.volumeInfo.imageLinks.smallThumbnail
+                      );
+                    }}
+                  >
+                    Add Book
+                  </button>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </>

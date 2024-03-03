@@ -87,7 +87,7 @@ const BookLogForm = () => {
 
   return (
     <div className="booklogForm">
-      <h2>Log a Book</h2>
+      <h1>Log a Book</h1>
       <form onSubmit={handleFormSubmit}>
         {/* Title */}
         <label htmlFor="title">Title:</label>

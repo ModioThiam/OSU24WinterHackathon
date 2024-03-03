@@ -40,7 +40,7 @@ def get_category(book):
     return book['volumeInfo']['categories'][0]
 
 
-def get_book_suggestions(author: str, category: str, max_results=5):
+def get_book_suggestions(author: str, category: str, max_results=10):
     """
     :param author: Author of the user input book
     :param category: Category of the user input book

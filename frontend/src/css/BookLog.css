@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: gray;
+  /* color: gray; */
   position: relative;
   padding-top: 0px;
 }
@@ -21,7 +21,7 @@
 }
 
 .readingHistory {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   padding-left: 2rem;
   /* padding-right: 10%; */
   display: flex;
@@ -45,25 +45,23 @@
     0px -1px 0px rgba(0, 0, 0, 0.7);
 }
 
-
 .readingHistory text {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: bold;
   margin-right: 9rem;
   font-size: 3rem;
-  max-width: 3rem; 
-  
+  max-width: 3rem;
 }
 
-.booklogForm{
+.booklogForm {
   padding: 50px 50px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
-.booklogForm h2{
-    text-align: center;
-    font-size: 3rem; /* Adjust font size */
-    font-weight: normal;
-    padding-bottom: 40px;
+.booklogForm h2 {
+  text-align: center;
+  font-size: 3rem; /* Adjust font size */
+  font-weight: normal;
+  padding-bottom: 40px;
 }
 
 form {

@@ -81,25 +81,25 @@ def get_recommendations():
     data = get_book_suggestions(author,category)
 
     if data:
-        print("this is all the data",data)
+        print("this is all the data recommendations",len(data))
         return jsonify(data[:6])
     else:
         return jsonify({})
 
 
     
-@app.route('/getBookz',methods=['GET'])
-def get_bookz():
-    title = "The Giver"
-    author = "Lois Lowry"
-    print("title and author", title, author)
-    data = get_book(title, author)
-    if data:
-        return jsonify(data)
-    else:
-        return jsonify({})
+# @app.route('/getBookz',methods=['GET'])
+# def get_bookz():
+#     title = "The Giver"
+#     author = "Lois Lowry"
+#     print("title and author", title, author)
+#     data = get_book(title, author)
+#     if data:
+#         return jsonify(data)
+#     else:
+#         return jsonify({})
     
-    # return jsonify(data[0])
+#     # return jsonify(data[0])
 
 
 @app.route('/readingHistory',methods=['GET'])
