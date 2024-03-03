@@ -68,6 +68,13 @@ def get_books():
     data = search_books(seach_term)
     return jsonify(data[0])
 
+
+@app.route('/readingHistory',methods=['GET'])
+def get_history():
+    # Gets and returns the user's books array
+    res = collection.find({"user_name": "testUser1"})[0]['books']
+    return res
+
     
 
 # Running app
