@@ -2,6 +2,14 @@ import React, { useState } from "react";
 
 import './Discover.css';
 
+function truncateDescription(description, maxLength = 100) {
+    if (description.length > maxLength) {
+        return description.substring(0, maxLength) + '...';
+    } else {
+        return description;
+    }
+}
+
 function Discover() {
     const [searchWord, setSearchWord] = useState("");
     const [searchResults, setSearchResults] = useState(null);
@@ -46,22 +54,23 @@ function Discover() {
                     <button type="submit">Search</button>
                 </form>
                 {/* Display search results */}
-                    <div>
-                        <h2>Search Results:</h2>
-                        
-                        <ul>
-                        {searchResults && (
-                            <div>
-                                <h2>Book Details:</h2>
-                                <p>Title: {searchResults["title"]}</p>
-                                <p>Author: {searchResults["authors"]}</p>
-                                <p>Description: {searchResults["description"]}</p>
-                            </div>
-                        )}
-                        </ul>
-                    </div>
-            
+                    
+                <h2>Search Results:</h2>
+                <h2>Books</h2>
+                <div className="cards-container-box">
+                    {searchResults && searchResults.map(book => (
+                        <div className="card" key={book.title}>
+                            <h2>{book.title}</h2>
+                            <p>Author: {book.authors}</p>
+                            <p>Description: {truncateDescription(book.description)}</p>
+                            <button className="add-book-button">Add Book</button>
+                        </div>
+                        ))}
+                </div>
             </div>
+                        
+            
+            
         </div>
         </>
     )
