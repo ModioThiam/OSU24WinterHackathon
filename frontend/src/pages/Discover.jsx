@@ -55,42 +55,6 @@ function Discover() {
       .then((bookData) => console.log("book data is", bookData));
   };
 
-    return (
-        <>
-        <div id="discover">
-            <div className="discover-container">
-                <h1>Discover New Books</h1>
-                <form onSubmit={handleSearchSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Search for books..."
-                        value={searchWord}
-                        onChange={handleSearchChange}
-                    />
-                    <button type="submit">Search</button>
-                </form>
-                {/* Display search results */}
-                    
-                <h2>Search Results:</h2>
-                <h2>Books</h2>
-                <div className="cards-container-box">
-                    {searchResults && searchResults.map(book => (
-                        <div className="card" key={book.title}>
-                            <h2>{book.title}</h2>
-                            <p>{book.thumbnail}</p>
-                            <p>Author: {book.authors}</p>
-                            <p>Description: {truncateDescription(book.description)}</p>                           
-                            <button className="add-book-button">Add Book</button>
-                        </div>
-                        ))}
-                </div>
-            </div>
-            
-            
-            
-        </div>
-        </>
-    )
   return (
     <>
       <div id="discover">
@@ -114,6 +78,7 @@ function Discover() {
               searchResults.map((book) => (
                 <div className="card" key={book.title}>
                   <h2>{book.title}</h2>
+                  <p>{book.thumbnail}</p>
                   <p>Author: {book.authors}</p>
                   <p>Description: {truncateDescription(book.description)}</p>
                   <button
