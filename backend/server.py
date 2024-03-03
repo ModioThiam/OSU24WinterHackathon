@@ -35,9 +35,7 @@ def get_time():
  
 @app.route('/logbook',methods=["POST"])
 def log_book():
-    print("calling log book")
     data = request.get_json()
-    print("data is ", data)
     user_name = data['user_name']
     title = data['title']
     author = data['author']
@@ -53,7 +51,7 @@ def log_book():
     )
     # Creates a new document if the user doesn't have a document associated with them yet
     if not res:
-        collection.insert_one({"user_name":user_name, "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
+        collection.insert_one({"user_name":user_name, "toRead":[], "books":[{"title":title, "author":author, "rating":rating, "startDate":startDate, "endDate":endDate}]})
     return {'Name':"geek", 
         "Age":"22",
         "Date":x, 
@@ -80,6 +78,28 @@ def get_history():
     # Gets and returns the user's books array
     res = collection.find({"user_name": "testUser1"})[0]['books']
     return res
+
+@app.route('/addToReadingList',methods=['POST'])
+def add_to_reading_list():
+    user_name = "testUser1"
+    data = request.get_json()
+    print("data is ", data)
+    title = data['bookTitle']
+    authors = data['bookAuthors']
+    print("title and authors", title, authors)
+
+        # Adds to book list if there is already an account associated with the user name
+    # Only adds the book if it's not already in the books array
+    res = collection.find_one_and_update(
+        {"user_name": user_name},
+        {"$addToSet": {"toRead": {"title": title, "author": authors}}}
+    )
+    # Creates a new document if the user doesn't have a document associated with them yet
+    if not res:
+        collection.insert_one({"user_name":user_name, "toRead": {"title":title, "author":authors}})
+
+    return {"hi":"hi"}
+
 
     
 
