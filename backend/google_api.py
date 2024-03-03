@@ -3,9 +3,9 @@ import requests
 api_key = 'AIzaSyBzBaBPGulGARHGTkr9AMmxCsjjR50KI3U'
 
 
-def get_book_id(title: str, author: str) -> list:
+def get_book(title: str, author: str) -> list:
     """
-    Retrieves a Google Book ID from title and author
+    Retrieves a Google Book JSON from title and author
     :param title: Book title
     :param author: Book author
     :return: Google Books API book ID
@@ -21,8 +21,8 @@ def get_book_id(title: str, author: str) -> list:
     if response.status_code == 200:
         data = response.json()
         if 'items' in data and len(data['items']) > 0:
-            book_id = data['items'][0]
-            return book_id
+            book = data['items'][0]
+            return book
         else:
             print('No book found with the specified title and author.')
             return []
@@ -82,7 +82,7 @@ def main():
         book_suggestions_set = set()
 
         # Get recommended books for the current user test book
-        user_book = get_book_id(user_book_title, user_book_author)
+        user_book = get_book(user_book_title, user_book_author)
         user_book_category = get_category(user_book)
         book_suggestions = get_book_suggestions(user_book_author, user_book_category)
 
