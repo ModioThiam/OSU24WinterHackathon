@@ -72,6 +72,21 @@ def get_books():
     
     # return jsonify(data[0])
 
+@app.route('/getBookz',methods=['GET'])
+def get_bookz():
+    # need to find a way to get input string from frontend search bar, and call 
+    # search_books() function with that paramter
+    title = "The Giver"
+    author = "Lois Lowry"
+    print("title and author", title, author)
+    data = get_book(title, author)
+    if data:
+        return jsonify(data)
+    else:
+        return jsonify({})
+    
+    # return jsonify(data[0])
+
 
 @app.route('/readingHistory',methods=['GET'])
 def get_history():
