@@ -41,7 +41,7 @@ function BookLog() {
 
   return (
     <>
-      <div className="readingHistory">
+      <div id="mylibrary" className="readingHistory">
         <text>My Library</text>
         {history.map((book) => (
           <Book
