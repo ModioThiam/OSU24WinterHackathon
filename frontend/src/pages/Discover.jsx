@@ -116,8 +116,8 @@ function Discover() {
 
           {searchResults && (
             <>
-              <h2>Search Results:</h2>
-              <h2>Books</h2>
+              <p>Search Results:</p>
+              <p>Books</p>
             </>
           )}
 
@@ -126,7 +126,7 @@ function Discover() {
               searchResults.map((book) => (
                 <div className="card" key={book.title}>
                   <img src={book.thumbnail}></img>
-                  <h2>{book.title}</h2>
+                  <p><strong>{book.title}</strong></p>
 
                   <p>
                     <strong>Author:</strong> {book.authors}
@@ -184,7 +184,7 @@ function Discover() {
                       book.volumeInfo.imageLinks.smallThumbnail
                     }
                   ></img>
-                  <h2>{book.volumeInfo.title}</h2>
+                  <p><strong>{book.volumeInfo.title}</strong></p>
 
                   <p>
                     <strong>Author:</strong> {book.volumeInfo.authors}
